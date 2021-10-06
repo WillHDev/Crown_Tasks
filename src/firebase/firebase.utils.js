@@ -18,7 +18,7 @@ const config =
 
   export const auth = firebase.auth();
 
-  const firestore = firestore();
+  export const firestore = firebase.firestore();
 
   const provider = new firebase.auth.GoogleAuthProvider();
   ///trigger google auth popup whenever we use this provider

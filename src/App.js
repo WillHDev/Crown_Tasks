@@ -10,27 +10,52 @@ import './App.css';
 import HomePage from './pages/HomePage';
 import LandingPage from './pages/components/LandingPage';
 import Header from './shared/components/Header/Header';
+import { auth } from './firebase/firebase.utils';
 
 
 
-function App() {
-  return (
-    <div>
-      <Router>
-      <Header />
-      <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route path="/auth">
-          <LandingPage />
-        </Route>
-        <Redirect to="auth" />
-      </Switch>
-      </Router>
-    </div>
-   
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      currentUser: null
+    }
+  }
+
+unSubscribeFromAuth = null;
+
+  componentDidMount()  {
+    this.unSubscribeFromAuth = auth.onAuthStateChanged( user => {
+      this.setState({ currentUser: user });
+      console.log(user)
+    });
+  }
+
+  componentWillUnmount() {
+    this.unSubscribeFromAuth();
+  }
+
+  render() {
+    return (
+      <div>
+        <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="/auth">
+            <LandingPage />
+          </Route>
+          <Redirect to="auth" />
+        </Switch>
+        </Router>
+      </div>
+     
+    );
+  }
+  
 }
 
 export default App;
