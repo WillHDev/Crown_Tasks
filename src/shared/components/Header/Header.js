@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom';
 
 //import { ReactComponent as Logo } from '../../assets/crown.svg';
 
-
+import { auth } from '../../../firebase/firebase.utils';
 
 import './Header.styles.scss';
 
 
 
-const Header = () => (
+const Header = ({ currentUser }) => (
 
   <div className='header'>
 
@@ -36,6 +36,11 @@ const Header = () => (
         CONTACT
 
       </Link>
+      {
+          currentUser ?
+          <div className='option' onClick={() => auth.signOut()}> Log Out</div>:
+          <Link className='option'  to='/auth'> Sign In</Link>
+      }
 
     </div>
 
@@ -46,3 +51,4 @@ const Header = () => (
 
 
 export default Header;
+// <Link className='option' to='/auth'> Log Out</Link>
