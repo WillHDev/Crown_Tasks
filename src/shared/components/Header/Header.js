@@ -19,7 +19,7 @@ const Header = ({ currentUser }) => (
 
     <Link className='logo-container' to='/'>
 
-     <h1>Logo Goes Here</h1>
+     <h3>1</h3>
 
     </Link>
 

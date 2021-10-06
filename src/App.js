@@ -8,7 +8,7 @@ import {
 
 import './App.css';
 import HomePage from './pages/HomePage';
-import LandingPage from './pages/components/LandingPage';
+import LandingPage from './pages/LandingPage';
 import Header from './shared/components/Header/Header';
 import { auth } from './firebase/firebase.utils';
 

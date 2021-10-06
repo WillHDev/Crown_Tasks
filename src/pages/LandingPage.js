@@ -4,7 +4,7 @@ import React from 'react';
 
 
 
-import SignIn from '../../user/components/Sign-In';
+import SignIn from '../user/components/Sign-In';
 
 
 
